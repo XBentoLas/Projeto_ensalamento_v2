@@ -1,5 +1,6 @@
 import os
 from flask import Flask
+from flask_migrate import Migrate
 from dotenv import load_dotenv
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -18,6 +19,9 @@ def create_app():
 
     # Inicializa o banco de dados com a aplicação
     db.init_app(app)
+    
+    # Incializa o migrate do banco de dados
+    migrate = Migrate(app, db)
 
     # Registra os Blueprints (conjuntos de rotas)
     app.register_blueprint(salas_bp)
