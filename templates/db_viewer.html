@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador de Salas</title>
+    <style>
+        body { font-family: sans-serif; margin: 2em; background-color: #f9f9f9; }
+        table { width: 100%; border-collapse: collapse; box-shadow: 0 2px 3px rgba(0,0,0,0.1); }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #4CAF50; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        h1 { color: #333; }
+    </style>
+</head>
+<body>
+    <h1>Visualizador de Tabelas</h1>
+
+    <h2>Tabela: Salas</h2>
+    <!-- 1. Verificamos a variável 'salas' que veio do Python -->
+    {% if salas %}
+        <table>
+            <thead>
+                <tr>
+                    <!-- 2. Ajustamos os cabeçalhos da tabela -->
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Prédio</th>
+                    <th>Capacidade</th>
+                    <th>Tipo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 3. Fazemos o loop na lista 'salas' e usamos a variável 'sala' -->
+                {% for sala in salas %}
+                <tr>
+                    <!-- 4. Acessamos as propriedades de cada objeto 'sala' -->
+                    <td>{{ sala.id }}</td>
+                    <td>{{ sala.nome }}</td>
+                    <td>{{ sala.predio }}</td>
+                    <td>{{ sala.capacidade }}</td>
+                    <td>{{ sala.tipo }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Nenhuma sala encontrada no banco de dados.</p>
+    {% endif %}
+
+</body>
+</html>
+

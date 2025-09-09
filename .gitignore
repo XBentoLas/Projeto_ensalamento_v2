@@ -1,0 +1,47 @@
+# ----------------------------------------------------------------
+# Arquivo .gitignore para projetos Python
+# ----------------------------------------------------------------
+
+# Ambiente Virtual (O MAIS IMPORTANTE!)
+# Ignora a pasta do ambiente virtual inteira.
+venv/
+.venv/
+env/
+.env/
+
+# Arquivos de Cache e compilados do Python
+# São gerados automaticamente e não precisam ser versionados.
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Pastas de Editores e IDEs
+# Configurações específicas da sua máquina.
+.vscode/
+.idea/
+.project
+.pydevproject
+.settings/
+
+# Arquivos de Sistema Operacional
+# Arquivos de cache do macOS e Windows.
+.DS_Store
+Thumbs.db
+
+# Arquivos de Ambiente (MUITO IMPORTANTE PARA SEGURANÇA)
+# Nunca envie arquivos com senhas, chaves de API, etc.
+.env
+.env.*
+*.env
+
+# Pastas de build e distribuição
+# Geradas ao criar pacotes ou executáveis.
+build/
+dist/
+*.egg-info/
+
+# Arquivos de testes e relatórios de cobertura
+.pytest_cache/
+.coverage
+htmlcov/
