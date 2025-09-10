@@ -1,0 +1,31 @@
+services:
+  web:
+    build: .
+    container_name: ensalamento-app-mysql
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    environment:
+      - DATABASE_URL=mysql+pymysql://bento:1234@db-mysql:3306/ensalamento
+      - FLASK_APP=main.py
+      - FLASK_DEBUG=1
+    depends_on:
+      - db-mysql
+
+  db-mysql:
+    image: mysql:8.0
+    container_name: ensalamento-db-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ensalamento
+      MYSQL_DATABASE: ensalamento
+      MYSQL_USER: bento
+      MYSQL_PASSWORD: 1234
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
